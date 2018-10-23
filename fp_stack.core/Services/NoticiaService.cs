@@ -1,4 +1,5 @@
 ﻿using fp_stack.core.Models;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,11 +9,24 @@ namespace fp_stack.core.Services
 {
     public class NoticiaService
     {
+        private IMemoryCache _memeorycache;
+        public NoticiaService(IMemoryCache memoryCache)
+        {
+            _memeorycache = memoryCache;
+        }
         public IEnumerable<Noticia> GetItens(int total)
         {
-            Task.Delay(200).Wait();
+            var key = "chave_de_noticias";
 
             var retorno = new List<Noticia>();
+            if(!_memeorycache.TryGetValue(key, out retorno))
+            {
+                //CONSULTAR DO BD   
+            Task.Delay(200).Wait();
+
+                retorno = new List<Noticia>();
+
+
             retorno.Add(new Noticia()
             {
                 Id = 1,
@@ -85,6 +99,15 @@ namespace fp_stack.core.Services
                 Imagem = "/assets/noticias/facebook.0.jpg",
                 DescricaoImagem = "descrição completa da imagem"
             });
+
+             var cacheEntrieOptions = new MemoryCacheEntryOptions()
+             .SetAbsoluteExpiration(DateTime.Now.AddMinutes(30));
+
+            //var cacheEntrieOptions = new MemoryCacheEntryOptions()
+            //.SetAbsoluteExpiration(DateTime.Now.AddMinutes(30));
+
+                _memeorycache.Set(key, retorno, cacheEntrieOptions);
+            }
 
             return retorno;
         }

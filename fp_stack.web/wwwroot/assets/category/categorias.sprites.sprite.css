@@ -1,0 +1,58 @@
+/*
+This is an example of how to use the image sprite in your own CSS files
+*/
+.categorias.sprites {
+	background-image: url('categorias.sprites.sprite.jpg');
+	background-repeat: no-repeat;
+	display: inline-block;
+}
+.categorias.sprites.rose {
+	width: 151px;
+	height: 67px;
+	background-position: -10px -10px;
+}
+.categorias.sprites.acer {
+	width: 119px;
+	height: 63px;
+	background-position: -10px -87px;
+}
+.categorias.sprites.apple {
+	width: 125px;
+	height: 64px;
+	background-position: -10px -160px;
+}
+.categorias.sprites.asus {
+	width: 124px;
+	height: 67px;
+	background-position: -10px -234px;
+}
+.categorias.sprites.black {
+	width: 130px;
+	height: 65px;
+	background-position: -10px -311px;
+}
+.categorias.sprites.blue {
+	width: 120px;
+	height: 67px;
+	background-position: -10px -386px;
+}
+.categorias.sprites.carton {
+	width: 136px;
+	height: 66px;
+	background-position: -10px -463px;
+}
+.categorias.sprites.computer {
+	width: 153px;
+	height: 67px;
+	background-position: -10px -539px;
+}
+.categorias.sprites.lenovo {
+	width: 139px;
+	height: 73px;
+	background-position: -10px -616px;
+}
+.categorias.sprites.pink {
+	width: 119px;
+	height: 70px;
+	background-position: -10px -699px;
+}
